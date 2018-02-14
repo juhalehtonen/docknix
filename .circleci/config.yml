@@ -1,9 +1,10 @@
 version: 2
 jobs:
   build:
-    docker:
+    machine: true
+    #docker:
       # Bump cache key version below when changing elixir version
-      - image: circleci/elixir:1.6.1
+      #- image: circleci/elixir:1.6.1
 
     # Env vars, could also be set in CircleCI app settings
     environment:
