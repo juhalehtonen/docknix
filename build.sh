@@ -8,11 +8,10 @@
 rm -rf _build/prod/rel/*
 
 # Build the image
-docker build -e DOCKNIX_RELEASE_COOKIE=$DOCKNIX_RELEASE_COOKIE \
+docker build --rm -t docknix-build -f Dockerfile.build . -e DOCKNIX_RELEASE_COOKIE=$DOCKNIX_RELEASE_COOKIE \
 -e DOCKNIX_SECRET_KEY_BASE=$DOCKNIX_SECRET_KEY_BASE \
 -e DOCKNIX_DB_USER=$DOCKNIX_DB_USER \
--e DOCKNIX_DB_PASS=$DOCKNIX_DB_PASS \
---rm -t docknix-build -f Dockerfile.build .
+-e DOCKNIX_DB_PASS=$DOCKNIX_DB_PASS
 
 # Run the container
 docker run -e DOCKNIX_RELEASE_COOKIE=$DOCKNIX_RELEASE_COOKIE \
