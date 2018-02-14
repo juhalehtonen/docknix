@@ -4,6 +4,20 @@ A Dockerized, zero-dependency Phoenix 1.3 setup which should be used as a sample
 
 Includes everything needed to build, deploy and run a default Phoenix application (Nginx and PostgreSQL).
 
+## Quickstart
+
+Assuming you just want to build and run this application with everything already configured properly:
+
+```
+# Locally
+./build.sh
+
+# On the server
+docker network create nginx-network
+docker-compose up # in app diretory
+docker-compose up # in nginx directory
+```
+
 ## All the steps
 
 Below is a quick outline of the steps we needed to take to achieve this setup.
