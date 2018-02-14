@@ -24,7 +24,7 @@ services:
     container_name: docknix-server
     environment:
       - PORT=5000
-      - HOST="docknix.com"
+      - HOST="elixir.observer"
     command: foreground
     networks:
       - nginx-network
