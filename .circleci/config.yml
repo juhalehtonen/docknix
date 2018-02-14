@@ -26,7 +26,9 @@ jobs:
 
       - run:
           name: Copy build artifacts
-          command: docker cp docknix-build:/_build _build
+          command: |
+            docker ps -a
+            docker cp docknix-build:/_build _build
 
       # Deploy
       - deploy:
