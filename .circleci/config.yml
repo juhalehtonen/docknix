@@ -24,6 +24,10 @@ jobs:
           name: Build everything
           command: ./build.sh
 
+      - run:
+          name: Copy build artifacts
+          command: docker cp docknix-build:/_build _build
+
       # Deploy
       - deploy:
           name: Deploy to Production
