@@ -20,7 +20,7 @@ jobs:
 
       # Install Docker
       - run:
-          name: Install NodeJS
+          name: Install Docker
           command: |
               sudo apt-get -y install \
                   apt-transport-https \
@@ -32,7 +32,7 @@ jobs:
                  "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
                  $(lsb_release -cs) \
                  stable"
-              DEBIAN_FRONTEND=noninteractive apt-get -y update
+              DEBIAN_FRONTEND=noninteractive sudo apt-get -y update
               sudo apt-get -y install docker-ce
 
       # Build with Docker
