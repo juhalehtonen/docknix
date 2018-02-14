@@ -18,6 +18,7 @@ config :docknix, DocknixWeb.Endpoint,
   url: [host: {:system, "HOST"}, port: {:system, "PORT"}],
   server: true,
   root: ".",
+  version: Application.spec(:docknix, :vsn),
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
