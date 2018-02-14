@@ -21,3 +21,12 @@ DEBIAN_FRONTEND=noninteractive apt-get -y update
 
 # Install the latest version of Docker CE (TODO: Change to specific version)
 sudo apt-get -y install docker-ce
+
+# Get docker-compose
+sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+
+# Make docker-compose executable
+sudo chmod +x /usr/local/bin/docker-compose
+
+# Create nginx network
+sudo docker network create nginx-network
