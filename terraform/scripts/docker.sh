@@ -19,5 +19,5 @@ sudo add-apt-repository \
 # Update the apt package index.
 DEBIAN_FRONTEND=noninteractive apt-get -y update
 
-# Install the latest version of Docker CE
+# Install the latest version of Docker CE (TODO: Change to specific version)
 sudo apt-get -y install docker-ce
