@@ -19,7 +19,9 @@ config :docknix, DocknixWeb.Endpoint,
   server: true,
   root: ".",
   version: Application.spec(:docknix, :vsn),
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  secret_key_base:
+    :crypto.hash(:sha256, System.get_env("DOCKNIX_SECRET_KEY_BASE")) |> Base.encode16()
 
 # Do not print debug messages in production
 config :logger, level: :info
@@ -65,10 +67,6 @@ config :logger, level: :info
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
 # import_config "prod.secret.exs"
-
-config :docknix, Docknix.Endpoint,
-  secret_key_base:
-    :crypto.hash(:sha256, System.get_env("DOCKNIX_SECRET_KEY_BASE")) |> Base.encode16()
 
 # Configure your database
 config :docknix, Docknix.Repo,
