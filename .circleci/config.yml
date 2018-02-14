@@ -34,11 +34,17 @@ jobs:
       - deploy:
           name: Deploy to Production
           command: |
+            echo "Add SSH key..";
             ssh-keyscan -H $APP_HOST >> ~/.ssh/known_hosts;
+            echo "List files..";
             ls -al;
+            echo "Deploy tarball..";
             rsync -ravhz --stats --progress _build/prod/rel/$APP_NAME/releases/$APP_VERSION/$APP_NAME.tar.gz $APP_USER@$APP_HOST:/home/$APP_USER/apps/$APP_NAME/_build/prod/rel/$APP_NAME/releases/$APP_VERSION/;
+            echo "Deploy nginx..";
             rsync -ravhz --stats --progress nginx/ $APP_USER@$APP_HOST:/home/$APP_USER/nginx;
+            echo "Deploy Dockerfile..";
             rsync -ravhz --stats --progress Dockerfile.run $APP_USER@$APP_HOST:/home/$APP_USER/apps/$APP_NAME;
+            echo "Deploy docker-compose..";
             rsync -ravhz --stats --progress docker-compose.yml $APP_USER@$APP_HOST:/home/$APP_USER/apps/$APP_NAME;
       - deploy:
           name: Post-deploy and app restart on production
