@@ -1,10 +1,9 @@
 version: 2
 jobs:
   build:
-    machine: true
-    #docker:
+    docker:
       # Bump cache key version below when changing elixir version
-      #- image: circleci/elixir:1.6.1
+      - image: circleci/elixir:1.6.1
 
     # Env vars, could also be set in CircleCI app settings
     environment:
@@ -13,7 +12,7 @@ jobs:
 
     steps:
       - checkout
-      #- setup_remote_docker
+      - setup_remote_docker
 
       # Ensure system dependencies are available for deployment
       - run:
