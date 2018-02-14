@@ -18,12 +18,17 @@ docker-compose up # in app diretory
 docker-compose up # in nginx directory
 ```
 
-For CI & CD, CircleCI needs the following environment variables set:
+For CI (and building with Docker in general), we need the following environment variables set:
 
 - `DOCKNIX_RELEASE_COOKIE` for the distributed Erlang cookie
 - `DOCKNIX_SECRET_KEY_BASE` for Phoenix secret key base
 - `DOCKNIX_DB_USER` for PostgreSQL username
 - `DOCKNIX_DB_PASS` for PostgreSQL password
+
+Additionally, for CircleCI:
+
+- `APP_HOST` to know where to deploy to with CI
+- `APP_USER` to define which user to deploy as with CI
 
 ## All the steps
 
