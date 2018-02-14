@@ -28,12 +28,22 @@ Lines with `*` signify files that you might need to change (e.g. app names).
 11. You can now run `./build.sh` to build your application in Docker
 12. Create `Dockerfile.run` for running the built release *
 13. Add `docker-compose.yml` to provision and manage the containers *
-14. Now we can start with `docker-compose up`
 
 ### More steps for Phoenix
 
-15. Adjust `config/prod.exs` to follow Distillery basics *
-16. Adjust `config/prod.secret.exs` for production secrets *
+14. Adjust `config/prod.exs` to follow Distillery basics *
+15. Adjust `config/prod.secret.exs` for production secrets *
+
+### Steps for Nginx @ Docker
+
+16. Create a Docker network with `docker network create nginx-network`
+17. Create directories `nginx` and `nginx/conf.d` and place `docker-compose.yml` and Nginx configs there
+
+### Steps for running everything
+
+18. Assume we have already run `docker network create nginx-network`
+19. Run `docker-compose up` in application directory
+20. Run `docker-compose up` in nginx directory
 
 ## Phoenix locally
 
