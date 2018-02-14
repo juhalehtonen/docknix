@@ -33,23 +33,23 @@ output "Droplet_statuses" {
 
 # Domain
 output "Domain_droplet" {
-    value = "${digitalocean_domain.domain.id}"
+    value = "${digitalocean_domain.domain.0.id}"
 }
 output "Domain_load_balancer" {
-    value = "${digitalocean_domain.domain_lb.id}"
+    value = "${digitalocean_domain.domain_lb.0.id}"
 }
 output "Domain_floating_ip" {
-    value = "${digitalocean_domain.domain_fip.id}"
+    value = "${digitalocean_domain.domain_fip.0.id}"
 }
 
 
 # Floating IP
 output "Floating_IP_address" {
-    value = "${digitalocean_floating_ip.web_fip.ip_address}"
+    value = "${digitalocean_floating_ip.web_fip.0.ip_address}"
 }
 
 
 # Load Balancer
 output "Load_balancer_IP" {
-  value = "${digitalocean_loadbalancer.web_lb.ip}"
+  value = "${digitalocean_loadbalancer.web_lb.0.ip}"
 }
