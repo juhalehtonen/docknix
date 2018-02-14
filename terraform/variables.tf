@@ -10,6 +10,12 @@ variable "digitalocean_token" {
   description = "Your DigitalOcean API token with read/write permissions."
 }
 
+# API
+variable "ssh_keys" {
+  type = "list"
+  description = "SSH keys to use."
+}
+
 # Domain
 variable "create_domain" {
   description = "Boolean whether or not to create a domain"

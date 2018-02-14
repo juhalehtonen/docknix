@@ -16,7 +16,7 @@ resource "digitalocean_droplet" "web" {
     backups  = "${var.droplet_backups}"
     ipv6     = "${var.create_floating_ip}" #Required for floating IP
     private_networking = "${var.create_floating_ip}" #Required for floating IP
-    ssh_keys = [13209286] # Get with curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer your_do_api_token" "https://api.digitalocean.com/v2/account/keys"
+    ssh_keys = "${var.ssh_keys}" # Get with curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer your_do_api_token" "https://api.digitalocean.com/v2/account/keys"
 
     provisioner "remote-exec" {
         scripts = "${var.scripts_to_run}"
