@@ -29,6 +29,7 @@ jobs:
           name: Deploy to Production
           command: |
             ssh-keyscan -H $APP_HOST >> ~/.ssh/known_hosts;
+            ls -al;
             rsync -ravhz --stats --progress _build/prod/rel/$APP_NAME/releases/$APP_VERSION/$APP_NAME.tar.gz $APP_USER@$APP_HOST:/home/$APP_USER/apps/$APP_NAME/_build/prod/rel/$APP_NAME/releases/$APP_VERSION/;
             rsync -ravhz --stats --progress nginx/ $APP_USER@$APP_HOST:/home/$APP_USER/nginx;
             rsync -ravhz --stats --progress Dockerfile.run $APP_USER@$APP_HOST:/home/$APP_USER/apps/$APP_NAME;
