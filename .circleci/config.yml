@@ -18,8 +18,8 @@ jobs:
           name: Install some system dependencies
           command: sudo apt-get update -qq && sudo apt-get install -y ssh rsync
 
-      - setup_remote_docker:
-          docker_layer_caching: true
+      #- setup_remote_docker:
+    #      docker_layer_caching: true
 
       # Build with Docker
       - run:

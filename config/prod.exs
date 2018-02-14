@@ -20,7 +20,8 @@ config :docknix, DocknixWeb.Endpoint,
   root: ".",
   version: Application.spec(:docknix, :vsn),
   cache_static_manifest: "priv/static/cache_manifest.json",
-  secret_key_base: "lolgetrektwat"
+  secret_key_base:
+    :crypto.hash(:sha256, System.get_env("DOCKNIX_SECRET_KEY_BASE")) |> Base.encode16()
 
 # Do not print debug messages in production
 config :logger, level: :info
