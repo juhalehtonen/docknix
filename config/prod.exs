@@ -64,4 +64,17 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
-import_config "prod.secret.exs"
+# import_config "prod.secret.exs"
+
+config :docknix, Docknix.Endpoint,
+  secret_key_base:
+    :crypto.hash(:sha256, System.get_env("DOCKNIX_SECRET_KEY_BASE")) |> Base.encode16()
+
+# Configure your database
+config :docknix, Docknix.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: :crypto.hash(:sha256, System.get_env("DOCKNIX_DB_USER")) |> Base.encode16(),
+  password: :crypto.hash(:sha256, System.get_env("DOCKNIX_DB_PASS")) |> Base.encode16(),
+  hostname: "docknix-db",
+  database: "docknix_prod",
+  pool_size: 15

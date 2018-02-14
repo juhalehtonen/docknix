@@ -18,6 +18,13 @@ docker-compose up # in app diretory
 docker-compose up # in nginx directory
 ```
 
+For CI & CD, CircleCI needs the following environment variables set:
+
+- `DOCKNIX_RELEASE_COOKIE` for the distributed Erlang cookie
+- `DOCKNIX_SECRET_KEY_BASE` for Phoenix secret key base
+- `DOCKNIX_DB_USER` for PostgreSQL username
+- `DOCKNIX_DB_PASS` for PostgreSQL password
+
 ## All the steps
 
 Below is a quick outline of the steps we needed to take to achieve this setup.

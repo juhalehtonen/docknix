@@ -36,7 +36,12 @@ environment :prod do
   # Change `include_erts` to `true` if your Docker image doesnt have Erlang installed
   set(include_erts: false)
   set(include_src: false)
-  set(cookie: :"1W9>AyAS3di|aEyYHn1[^mt)2w[Mh^TL5[*>X7,_E*>uhY?;?0Fl@ZQ?2pIRVd:H")
+
+  set(
+    cookie:
+      :crypto.hash(:sha256, System.get_env("DOCKNIX_RELEASE_COOKIE")) |> Base.encode16()
+      |> String.to_atom()
+  )
 end
 
 # You may define one or more releases in this file.
