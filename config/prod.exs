@@ -20,8 +20,7 @@ config :docknix, DocknixWeb.Endpoint,
   root: ".",
   version: Application.spec(:docknix, :vsn),
   cache_static_manifest: "priv/static/cache_manifest.json",
-  secret_key_base:
-    :crypto.hash(:sha256, System.get_env("DOCKNIX_SECRET_KEY_BASE")) |> Base.encode16()
+  secret_key_base: "paska"
 
 # Do not print debug messages in production
 config :logger, level: :info
@@ -71,8 +70,8 @@ config :logger, level: :info
 # Configure your database
 config :docknix, Docknix.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: :crypto.hash(:sha256, System.get_env("DOCKNIX_DB_USER")) |> Base.encode16(),
-  password: :crypto.hash(:sha256, System.get_env("DOCKNIX_DB_PASS")) |> Base.encode16(),
+  username: "paska",
+  password: "paska",
   hostname: "docknix-db",
   database: "docknix_prod",
   pool_size: 15
