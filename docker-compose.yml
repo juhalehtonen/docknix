@@ -1,0 +1,36 @@
+version: "3"
+services:
+  db:
+    image: postgres:10.2-alpine
+    container_name: docknix-db
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=docknix_prod
+    networks:
+      - nginx-network
+  admin:
+    image: docknix-release
+    container_name: docknix-admin
+    build:
+      context: .
+      dockerfile: Dockerfile.run
+    command: migrate
+    networks:
+      - nginx-network
+    depends_on:
+      - db
+  server:
+    image: docknix-release
+    container_name: docknix-server
+    environment:
+      - PORT=5000
+      - HOST="docknix.com"
+    command: foreground
+    networks:
+      - nginx-network
+    depends_on:
+      - db
+      - admin
+networks:
+  nginx-network:
+    external: true
